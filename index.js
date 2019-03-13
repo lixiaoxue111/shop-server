@@ -20,7 +20,7 @@ let type = require('./controller/type.js');
 let cart = require('./controller/cart.js');
 
 let router = new Router();
-router.use('/user', user.routes()); // '/user' 与前端一致
+router.use('/user', user.routes()); //
 router.use('/product', product.routes());
 router.use('/type',type.routes());
 router.use('/cart',cart.routes());
@@ -32,7 +32,7 @@ app.use(router.allowedMethods());//只允许特定的方法
 //引入init文件
 const { connect, initSchemas } = require('./init.js');
 (async () => {
-    await connect(); // 连接成功后才继续往下执行
+    await connect(); 
     initSchemas();
 })();
 
