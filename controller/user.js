@@ -6,9 +6,8 @@ const mongoose = require('mongoose');
 router.post('/registUser', async (ctx) => {
     // 获取model
     const User = mongoose.model('User');
-    // 接收post请求封装成user对象
     let newUser = new User(ctx.request.body);
-    // 使用save保存用户信息
+    // 保存用户信息
     await newUser.save().then(() => {
         ctx.body = {
             code: 200,
@@ -30,7 +29,6 @@ router.post('/loginUser',async (ctx)=>{
     let password = loginUser.password;
     //引入model
     const User = mongoose.model('User');
-    //查询用户名是否存在，存在再去比较密码
     await User.findOne({userName: userName}).exec().then(async (result)=>{
         if (result){
             let newUser = new User;
